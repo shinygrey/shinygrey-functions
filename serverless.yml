@@ -45,6 +45,17 @@ functions:
           method: get
           cors: true
 
+  twitter-get:
+    runtime: java11 #https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
+    handler: twitter_get.core::handleRequest
+    package:
+      artifact: twitter-get/target/deploy-package-standalone.jar
+    events:
+      - http:
+          path: /twitter
+          method: get
+          cors: true
+
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
