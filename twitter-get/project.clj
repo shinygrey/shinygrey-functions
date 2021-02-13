@@ -9,5 +9,5 @@
   :profiles {:dev {:dependencies [[ring/ring-devel "1.4.0"]]}}
   :jar-name "deploy-package.jar"
   :uberjar-name "deploy-package-standalone.jar"
-  :main hello-clojure.core
-  :aot [hello-clojure.core])
+  :main twitter-get-clojure.core
+  :aot [twitter-get-clojure.core])
