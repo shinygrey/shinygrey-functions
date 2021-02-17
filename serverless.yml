@@ -18,6 +18,15 @@ provider:
     STAGE: ${self:provider.stage}
   apiGateway:
     shouldStartNameWithService: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ssm:GetParameter
+        - ssm:GetParameters
+        - ssm:GetParametersByPath
+        - ssm:PutParameter
+      Resource:
+        - "arn:aws:ssm:${self:provider.region}:206914371811:parameter/shinygrey/*"
 
 package:
   individually: true
@@ -42,6 +51,28 @@ functions:
     events:
       - http:
           path: /hello/clojure
+          method: get
+          cors: true
+
+  instagram-auth:
+    handler: igauth/lambda-igauth.handler
+    runtime: nodejs12.x
+    package:
+      exclude:
+        - "*/**"
+      include:
+        - igauth/**
+    events:
+      - http:
+          path: /igauth/auth
+          method: get
+          cors: true
+      - http:
+          path: /igauth/deauth
+          method: get
+          cors: true
+      - http:
+          path: /igauth/ddel
           method: get
           cors: true
 

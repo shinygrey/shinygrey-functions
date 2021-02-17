@@ -1,0 +1,39 @@
+{
+    "name": "shinygrey-functions",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {},
+    "devDependencies": {
+        "eslint": "^7.20.0"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "eslintIgnore": [
+        "*.test.js",
+        "test/__mocks__/request.js"
+    ],
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "browser": true,
+            "commonjs": true,
+            "es2021": true
+        },
+        "extends": "eslint:recommended",
+        "parserOptions": {
+            "ecmaVersion": 12
+        },
+        "rules": {
+            "semi": [
+                "error",
+                "always"
+            ],
+            "no-extra-boolean-cast": "off"
+        },
+        "globals": {
+            "Buffer": true,
+            "process": true
+        }
+    }
+}
