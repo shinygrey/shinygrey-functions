@@ -73,6 +73,15 @@ functions:
           cors: true
       - http:
           path: /igauth/ddel
+
+  twitter-get:
+    runtime: java11 #https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
+    handler: twitter_get.core::handleRequest
+    package:
+      artifact: twitter-get/target/deploy-package-standalone.jar
+    events:
+      - http:
+          path: /twitter
           method: get
           cors: true
 

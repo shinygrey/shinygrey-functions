@@ -1,6 +1,7 @@
-# Leiningen default
-/target
-/classes
+# Leiningen
+target/
+classes/
+.lein-repl-history
 /checkouts
 profiles.clj
 pom.xml
