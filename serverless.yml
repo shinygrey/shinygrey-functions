@@ -73,6 +73,8 @@ functions:
           cors: true
       - http:
           path: /igauth/ddel
+          method: get
+          cors: true
 
   twitter-get:
     runtime: java11 #https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
