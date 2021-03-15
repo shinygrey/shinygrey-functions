@@ -54,6 +54,22 @@ functions:
           method: get
           cors: true
 
+  hello-ruby:
+    runtime: ruby2.7
+    handler: hello-ruby/lambda-hello-ruby.LambdaFunctions::Handler.process
+    package:
+      exclude:
+        - "*/**"
+        - package.json
+        - package-lock.json
+      include:
+        - hello-ruby/**
+    events:
+      - http:
+          path: /hello/ruby
+          method: get
+          cors: true
+
   instagram-auth:
     handler: igauth/lambda-igauth.handler
     runtime: nodejs12.x
@@ -76,16 +92,16 @@ functions:
           method: get
           cors: true
 
-  twitter-get:
-    runtime: java11 #https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
-    handler: twitter_get.core::handleRequest
-    package:
-      artifact: twitter-get/target/deploy-package-standalone.jar
-    events:
-      - http:
-          path: /twitter
-          method: get
-          cors: true
+#  twitter-get:
+#    runtime: java11 #https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
+#    handler: twitter_get.core::handleRequest
+#    package:
+#      artifact: twitter-get/target/deploy-package-standalone.jar
+#    events:
+#      - http:
+#          path: /twitter
+ #         method: get
+#          cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
