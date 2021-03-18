@@ -32,17 +32,6 @@ package:
   individually: true
 
 functions:
-  hello-fsharp:
-    runtime: dotnetcore3.1
-    handler: FsharpHandlers::AwsDotnetFsharp.Handler::hello
-    package:
-      artifact: hello-fsharp/bin/Release/netcoreapp3.1/deploy-package.zip
-    events:
-      - http: # https://www.nuget.org/packages/Amazon.Lambda.APIGatewayEvents/
-          path: /hello/fsharp
-          method: get
-          cors: true
-
   hello-clojure:
     runtime: java11 #https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
     handler: hello_clojure.core::handleRequest
@@ -51,6 +40,28 @@ functions:
     events:
       - http:
           path: /hello/clojure
+          method: get
+          cors: true
+
+  hello-csharp:
+    runtime: dotnetcore3.1
+    handler: AwsDotnetCsharp::AwsDotnetCsharp.Handler::HelloWorld
+    package:
+      artifact: hello-csharp/bin/release/netcoreapp3.1/deploy-package.zip
+    events:
+      - http:
+          path: /hello/csharp
+          method: get
+          cors: true
+
+  hello-fsharp:
+    runtime: dotnetcore3.1
+    handler: FsharpHandlers::AwsDotnetFsharp.Handler::hello
+    package:
+      artifact: hello-fsharp/bin/Release/netcoreapp3.1/deploy-package.zip
+    events:
+      - http: # https://www.nuget.org/packages/Amazon.Lambda.APIGatewayEvents/
+          path: /hello/fsharp
           method: get
           cors: true
 
